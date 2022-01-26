@@ -1,0 +1,32 @@
+.my-banner {
+    width: 100%;
+    font-size: 200%;
+    text-align: center;
+    color: white;
+    background-color: blue;
+}
+
+li.nav-item {
+    padding-right: 15px;
+}
+
+.modal-preauth{
+    display:block;
+}
+
+.modal-postauth{
+    display:none;
+}
+
+input{
+    display: block;
+    margin: 8px 0;
+    padding: 8px 2 px;
+    border-width: 0 0 2px 0;
+    width: 100%;
+}
+
+textarea{
+    width: 95%;
+    min-height: 150px;
+}
