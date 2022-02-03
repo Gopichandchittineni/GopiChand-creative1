@@ -147,7 +147,60 @@
               <button type="submit" class="btn btn-outline-danger">Create</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Creative Assignment Modals : Update & Delete -->
+  
+  <!-- Modal: Form to delete a Thread -->
+  <div class="modal fade" id="modal-delete-thread" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modal-delete-thread-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-delete-thread-label">Delete Thread?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you Sure you want to Delete?
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="delete-thread-final" class="btn btn-outline-danger"
+            data-bs-dismiss="modal">Yes</button>
+          <button type="click" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Form to Update thread -->
+  <div class="modal fade" id="modal-update-thread" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modal-update-thread-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-create-thread-label">Update Thread</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-update-thread" method="post">
+            <div>
+              <input type="text" name="title" placeholder="Title of the Thread" required minlength="2">
+            </div>
+            <div>
+              <input type="text" name="keywords" placeholder="Search keys separated by a blank" required minlength="2">
+            </div>
+            <div>
+              <textarea name="content" cols="50" rows="5" placeholder="Content of the thread" required
+                minlength="5"></textarea>
+            </div>
+            <div>
+              <button type="submit" id="update-thread-final" class="btn btn-outline-danger"
+                data-bs-dismiss="modal">Update</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -165,12 +218,12 @@
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-    apiKey: "AIzaSyBo4vfdsIGyd2GnGY7to_rcvDhnOvcyEGY",
-    authDomain: "cmsc5373-gopi-webapps.firebaseapp.com",
-    projectId: "cmsc5373-gopi-webapps",
-    storageBucket: "cmsc5373-gopi-webapps.appspot.com",
-    messagingSenderId: "797338757633",
-    appId: "1:797338757633:web:77b535f7acaac5f42bae00"
+      apiKey: "AIzaSyBo4vfdsIGyd2GnGY7to_rcvDhnOvcyEGY",
+      authDomain: "cmsc5373-gopi-webapps.firebaseapp.com",
+      projectId: "cmsc5373-gopi-webapps",
+      storageBucket: "cmsc5373-gopi-webapps.appspot.com",
+      messagingSenderId: "797338757633",
+      appId: "1:797338757633:web:77b535f7acaac5f42bae00"
 
     };
 
@@ -181,11 +234,7 @@
   <script type="module" src="app.js"></script>
   <!-- Optional JavaScript; choose one of the two! -->
 
-  <!-- Option 1: Bootstrap Bundle with Popper 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>-->
+  <!-- Option 1: Bootstrap Bundle with Popper -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

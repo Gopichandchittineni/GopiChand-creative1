@@ -1,6 +1,6 @@
 import {
     getFirestore, collection, addDoc, getDocs, query, orderBy,
-    doc, getDoc, where,
+    doc, getDoc, where, deleteDoc, updateDoc
 } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-firestore.js"
 //import { orderBy } from "lodash";
 import { COLLECTIONS } from "../model/constants.js";
@@ -68,4 +68,43 @@ export async function searchThreads(keywordsArray){
         threadList.push(t);
     });
     return threadList;
+}
+
+//Delete Thread Function - Lecture 1
+export async function deleteOneThread(threadId) {
+    const docRef = doc(db, COLLECTIONS.THREADS, threadId);
+    
+    //Delete all replies
+    const q = query(collection(db, COLLECTIONS.REPLIES), where('threadId', '==', threadId), orderBy('timestamp'));
+    const snapShot = await getDocs(q);
+
+
+    const replies =[];
+    snapShot.forEach(doc => {
+        const r = new Reply(doc.data());
+        r.set_docId(doc.id);
+        replies.push(r);
+    })
+    //console.log(replies);
+    //console.log(replies[0].uid);
+
+    for(let x=0;x<replies.length;x++)
+    {   
+        console.log(replies[x].docId);
+        const replyRef = doc(db, COLLECTIONS.REPLIES, replies[x].docId);
+        await deleteDoc(replyRef);
+    }
+    
+    //Delete Thread
+    const docSnap = await deleteDoc(docRef);
+}
+
+//Update Thread Function - Lecture 1
+export async function updateOneThread(threadId,formobj) {
+    const docRef = doc(db, COLLECTIONS.THREADS, threadId);
+    const docSnap = await updateDoc(docRef,{
+        title:formobj.title.value,
+        keywordsArray:formobj.keywords.value.toLowerCase().match(/\S+/g),
+        content:formobj.content.value
+    });
 }

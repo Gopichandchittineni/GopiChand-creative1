@@ -98,7 +98,8 @@ export function buildHomeScreen(threadList){
     <table class="table table-striped">
     <thead>
     <tr>
-      <th scope="col">Action</th>
+      <th scope="col">View</th>
+      <th scope="col">Creative Assignment</th>
       <th scope="col">Title</th>
       <th scope="col">Keywords</th>
       <th scope="col">Posted By</th>
@@ -128,6 +129,10 @@ if (threadList.length == 0){
 
     // Attach Event Listeners to view Buttons
     ThreadPage.addViewFormEvents();
+    // Attach Event Listeners to Delete Buttons
+    ThreadPage.deleteOneThreadEvents();
+    // Attach Event Listeners to Update Buttons
+    ThreadPage.updateOneThreadEvents();
 
 }
 
@@ -138,6 +143,18 @@ function buildThreadView(thread){
             <input type="hidden" name="threadId" value="${thread.docId}">
             <button type="submit" class="btn btn-outline-primary">View</button>
         </form>    
+    </td>
+    <td> 
+        <form method="post" class="thread-delete-form">
+            <input type="hidden" name="threadId" value="${thread.docId}">
+            <button type="submit" class="btn btn-dark" 
+            data-bs-toggle="modal" data-bs-target="#modal-delete-thread">Delete</button>
+        </form>
+        <form method="post" class="thread-update-form">
+            <input type="hidden" name="threadId" value="${thread.docId}">
+            <button type="submit" class="btn btn-warning" 
+            data-bs-toggle="modal" data-bs-target="#modal-update-thread">Update</button>
+        </form>       
     </td>
     <td>${thread.title}</td>
     <td>${!thread.keywordsArray || !Array.isArray(thread.keywordsArray) ? '' : thread.keywordsArray.join(' ')}</td>

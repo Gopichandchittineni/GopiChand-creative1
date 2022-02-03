@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site":"cnagagopi-l1p2",
+    "site":"cnagagopi-l1c",
     "public": "public",
     "ignore": [
       "firebase.json",
